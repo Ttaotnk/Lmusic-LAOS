@@ -9,14 +9,6 @@ let songs = [
         duration: "4:15",
         playCount: 0
     },{
-        title: "bellaມ",
-        artist: "T'nakha",
-        album: "",
-        cover: "pic/ເນາະຄົນງາມ.png",
-        src: "ms/Bella Ciao - La Casa De Papel (CrazyDaniel Remix).mp3",
-        duration: "4:15",
-        playCount: 0
-    },{
         title: "ດຶງຂື້ນໄປ",
         artist: "T'nakha",
         album: "",
