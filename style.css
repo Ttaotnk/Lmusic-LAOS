@@ -1,0 +1,464 @@
+ :root {
+            --primary-color: #6e8efb;
+            --secondary-color: #a777e3;
+            --text-color: #333;
+            --text-light: #666;
+            --text-lighter: #999;
+            --bg-color: #f5f5f5;
+            --card-bg: white;
+            --border-color: #eee;
+            --active-bg: #e6f0ff;
+            --hover-bg: #f0f0f0;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans Lao', sans-serif;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-color);
+            line-height: 1.6;
+          -webkit-tap-highlight-color: rgba(255, 0, 0, 0.0);
+        }
+        
+        .player-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 40px);
+            max-height: 900px;
+        }
+        
+        .search-container {
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: var(--transition);
+            background-color: var(--bg-color);
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(110, 142, 251, 0.2);
+        }
+        
+        .now-playing {
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            min-height: 180px;
+        }
+        
+        .now-playing-cover {
+            width: 140px;
+            height: 140px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .now-playing-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .now-playing-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .now-playing-artist {
+            font-size: 18px;
+            margin-bottom: 8px;
+            opacity: 0.9;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .now-playing-album {
+            font-size: 16px;
+            opacity: 0.8;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    position: relative; /* หรือ absolute แล้วแต่กรณี */
+    left: 8%;
+}
+        
+        .control-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            margin: 0 20px;
+            cursor: pointer;
+            color: var(--primary-color);
+            transition: var(--transition);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .control-btn:hover {
+            color: var(--secondary-color);
+            background-color: rgba(110, 142, 251, 0.1);
+            transform: scale(1.1);
+        }
+        
+        .play-btn {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(110, 142, 251, 0.3);
+        }
+        
+        .play-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .speed-btn {
+            font-size: 22px;
+            margin-left: 15px;
+            
+        }
+
+        .speed-options {
+            position: absolute;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 8px 0;
+            z-index: 100;
+            display: none;
+            min-width: 120px;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 5px;
+        }
+        
+        .speed-option {
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+        
+        .speed-option:hover {
+            background-color: var(--hover-bg);
+        }
+        
+        .progress-container {
+            padding: 15px 25px;
+            background-color: var(--card-bg);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: height 0.2s;
+        }
+        
+        .progress-bar:hover {
+            height: 10px;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.1s;
+        }
+        
+        .time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        .playlist {
+            flex: 1;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--border-color);
+        }
+        
+        .playlist::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .playlist::-webkit-scrollbar-track {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        
+        .playlist::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 4px;
+        }
+        
+        .song {
+            display: flex;
+            align-items: center;
+            padding: 15px 25px;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: var(--transition);
+            gap: 15px;
+        }
+        
+        .song:hover {
+            background-color: var(--hover-bg);
+        }
+        
+        .song.active {
+            background-color: var(--active-bg);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .song-cover {
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .song-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .song-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .song-artist {
+            font-size: 14px;
+            color: var(--text-light);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .song-duration {
+            font-size: 14px;
+            color: var(--text-lighter);
+            flex-shrink: 0;
+        }
+        
+        .no-songs, .no-results {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+            font-size: 16px;
+        }
+        
+        .no-results {
+            font-style: italic;
+        }
+        
+        .speed-container {
+            position: relative;
+            display: inline-block;
+            
+        }
+
+        /* ปุ่ม Play/Pause */
+        .play-pause-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: var(--transition);
+        }
+        
+        .play-icon, .pause-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 60%;
+            opacity: 0;
+        }
+        
+        .play-icon.active, .pause-icon.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .play-icon:not(.active), .pause-icon:not(.active) {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+        }
+        
+        .play-btn:hover .play-icon.active,
+        .play-btn:hover .pause-icon.active {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .player-container {
+                height: auto;
+                max-height: none;
+            }
+            
+            .now-playing {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .now-playing-cover {
+                margin-right: 0;
+                margin-bottom: 15px;
+                width: 120px;
+                height: 120px;
+            }
+            
+            .now-playing-info {
+                width: 100%;
+            }
+            
+            .controls {
+                padding: 15px;
+            }
+            
+            .control-btn {
+                margin: 0 10px;
+                font-size: 24px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .song {
+                padding: 12px 15px;
+            }
+            
+            .song-cover {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .now-playing-title {
+                font-size: 20px;
+            }
+            
+            .now-playing-artist {
+                font-size: 16px;
+            }
+            
+            .now-playing-album {
+                font-size: 14px;
+            }
+            
+            .control-btn {
+                margin: 0 8px;
+                font-size: 20px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .progress-container {
+                padding: 10px 15px;
+            }
+            
+            .song {
+                padding: 10px 15px;
+                gap: 10px;
+            }
+            
+            .song-title {
+                font-size: 15px;
+            }
+            
+            .song-artist, .song-duration {
+                font-size: 13px;
+            }
+        }
+        .olo{
+          width:50%;
+        }
+        .ollo {
+  width: 70%;
+  
+  filter: brightness(0) invert(0);
+
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  font-size: 25px;
+  color: white;
+  
+  background-color:  #6e8efb; /* พื้นหลังสีเข้ม */
+  border-bottom: 1px solid #6e8efb; /* เส้นแบ่งด้านล่าง */
+}
+
+.logo img {
+  height: 30%;
+  width:30%;
+  
+  
+}

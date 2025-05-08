@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ເຄື່ອງຫລິ້ນເພງພ້ອມລະບົບຄົ້ນຫາ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+</head>
+<body>
+  
+    <div class="player-container">
+      <header class="logo">
+        <p>ຟັງເພງລາວ</p>
+  <img src="img/iconlogo.png" alt="">
+        <p>ຕ້ອງແອບນີ້</p>
+</header>
+        <div class="search-container">
+            <input type="text" class="search-input" id="search-input" placeholder="ຄົ້ນຫາຊື່ເພງຫລືສິລະປິນ...">
+        </div>
+        
+        <div class="now-playing">
+            <img id="current-cover" class="now-playing-cover" src="https://via.placeholder.com/120" alt="Album Cover">
+            <div class="now-playing-info">
+                <div id="current-title" class="now-playing-title">ບໍ່ມີເພງທີ່ກຳລັງຫລິ້ນ</div>
+                <div id="current-artist" class="now-playing-artist">ສິລະປິນ</div>
+                <div id="current-album" class="now-playing-album">ອັລບັມ</div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="control-btn" onclick="prevSong()"><img class="olo" src="img/back.png" ></button>
+            
+            <button class="control-btn play-btn" onclick="playPause()" id="play-btn">
+                <div class="play-pause-container">
+                    <img class="play-icon active" src="img/play.png" alt="Play" id="play-icon">
+                    <img class="pause-icon" src="img/pause.png" alt="Pause" id="pause-icon">
+                </div>
+            </button>
+            
+            <button class="control-btn" onclick="nextSong()"><img class="olo" src="img/next.png" ></button>
+            <div class="speed-container">
+                <button class="control-btn speed-btn" id="speed-btn" onclick="toggleSpeedOptions()"><img class="ollo" src="img/set.png" ></button>
+                <div class="speed-options" id="speed-options">
+                    <div class="speed-option" onclick="setPlaybackSpeed(0.5)">0.5x</div>
+                    <div class="speed-option" onclick="setPlaybackSpeed(0.75)">0.75x</div>
+                    <div class="speed-option" onclick="setPlaybackSpeed(1.0)">1.0x (ປົກກະຕິ)</div>
+                    <div class="speed-option" onclick="setPlaybackSpeed(1.25)">1.25x</div>
+                    <div class="speed-option" onclick="setPlaybackSpeed(1.5)">1.5x</div>
+                    <div class="speed-option" onclick="setPlaybackSpeed(2.0)">2.0x</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" onclick="seek(event)">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="time">
+                <span id="current-time">00:00</span>
+                <span id="duration">00:00</span>
+            </div>
+        </div>
+        
+        <div class="playlist" id="playlist">
+            <!-- ເພງຈະຖືກເພີ່ມທີ່ນີ້ໂດຍ JavaScript -->
+        </div>
+    </div>
+
+    <audio id="audio-player"></audio>
+
+    <script src="ms.js">
+      
+    </script>
+</body>
+</html>
